@@ -23,9 +23,7 @@ namespace AC.Contracts
         /// <returns>
         /// The <see cref="string"/>
         /// </returns>
-        string MakeScreenshot(string stepName, string scenarioName);
-
-        //string StaticMakeScreenshot(string scenario);
+        string MakeScreenshot(string scenario);
 
         /// <summary>
         /// Determines whether [is driver null].
@@ -85,15 +83,10 @@ namespace AC.Contracts
         /// </summary>
         string GetCurrentActivityStatus();
 
-		/// <summary>
-		/// Scroll down.
-		/// </summary>
-		void ScrollDown();
-
-		/// <summary>
-		/// Moves the Age seekbar.
-		/// </summary>
-		void MoveSeekBar(int start, int end, int y);
+        /// <summary>
+        /// Moves the Age seekbar.
+        /// </summary>
+        void MoveSeekBar(int start, int end, int y);
 
         /// <summary>
         /// Click Android native Back Button
@@ -105,10 +98,6 @@ namespace AC.Contracts
         /// </summary>
         void SelectRandomSurveyValue(int start, int end, int y);
 
-		/// <summary>
-		/// Determines whether APK is in focus.
-		/// </summary>
-		void IsAtPackage(string expectedActivity);
-
-	}
+        void SetSauceLabsTestResult(string result);
+    }
 }

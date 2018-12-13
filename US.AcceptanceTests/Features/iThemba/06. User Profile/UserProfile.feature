@@ -13,6 +13,13 @@ Scenario: As a user I can open the My Profile menu option
 	And The user opens the My Profile menu option
 	Then The My Profile menu is opened
 
+@BeforeScenarioWithUniqueLogin @ignore
+Scenario: As a user I can save my information at My Profile
+	Given The user opens the iThemba app menu
+	And The user opens the My Profile menu option
+	When The user saves his information at My Profile
+	Then The My Profile information is saved
+
 @BeforeScenarioWithUniqueLogin
 Scenario: As a user I can return to Blood result Page 
 	Given The user opens the iThemba app menu

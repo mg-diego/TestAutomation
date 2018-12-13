@@ -102,15 +102,13 @@ namespace US.AcceptanceTests.Steps.BloodResults
         /// The Scan the first Barcode page is opened.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Given(@"The '(.*)' Blood Results page is opened")]
-        [When(@"The '(.*)' Blood Results page is opened")]
         [Then(@"The '(.*)' Blood Results page is opened")]
         public void TheUserBloodResultsIsOpened(string user)
         {
 
             var userLogin = this.GetLoginUser(user);
 
-            var result = analytics.GetAnalyticBarcodeDataRequestedFromDatabase(userLogin);
+            var result = analytics.GetAnalyticBarcodeDataRequestedFromDatabase();
             analytics.IsAnalyticBarcodeDataRequestedSaved(result, userLogin);
 
             switch (user)
@@ -131,13 +129,7 @@ namespace US.AcceptanceTests.Steps.BloodResults
                     this.bloodResultsPage.IsAtMoreThan1000ResultsPage(userLogin);
                     break;
                 case "UserWithMultipleImportResults":
-                    this.bloodResultsPage.IsAtLessThan50ResultsPage(userLogin);
-                    break;
-                case "UserWithSingleInvalidResults":
-                    this.bloodResultsPage.IsAtUniqueInvalidBloodResultsPage(userLogin);
-                    break;
-                case "UserWithMultipleInvalidResults":
-                    this.bloodResultsPage.IsAtMultipleInvalidBloodResultsPage(userLogin);
+                    this.bloodResultsPage.IsAt50_1000ResultsPage(userLogin);
                     break;
                 default:
                     throw new InvalidOperationException("Unknown user '"+user+"'.");
@@ -222,17 +214,10 @@ namespace US.AcceptanceTests.Steps.BloodResults
 
             switch (user)
             {
-                case "UserWithMultipleInvalidResults":
-                    bloodResultsPage.IsAtPastResultsWithInvalidResults();
-                    break;
                 case "UserWithMultipleImportResults":
                     bloodResultsPage.IsAtPastResultsWithImportedResults();
                     break;
-				case "ResultsOnTheWayMultiple":
-					bloodResultsPage.IsAtPastResultsWithInvalidResults();
-					break;
-
-				default:
+                default:
                     bloodResultsPage.IsAtPastResults();
                     break;
             }
@@ -249,7 +234,6 @@ namespace US.AcceptanceTests.Steps.BloodResults
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         [When(@"The user clicks in Show Barcode")]
-        [Then(@"The user clicks in Show Barcode")]
         public void TheUserClickShowBarcode()
         {
             bloodResultsPage.ClickShowBarcode();
@@ -260,7 +244,6 @@ namespace US.AcceptanceTests.Steps.BloodResults
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         [When(@"The user clicks in Close Barcode")]
-        [Then(@"The user clicks in Close Barcode")]
         public void TheUserCloseShowBarcode()
         {
             bloodResultsPage.ClickCloseBarcode();

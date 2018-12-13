@@ -63,11 +63,6 @@ namespace AC.Contracts.Pages
         #region .: 2 - Get SMS code :.
 
         /// <summary>
-        /// Determines whether [is at enter SMS code page].
-        /// </summary>
-        void IsAtEnterSMSCodePage();
-
-        /// <summary>
         /// Click in send code again button.
         /// </summary>
         void ClickSendCodeAgain();
@@ -103,6 +98,11 @@ namespace AC.Contracts.Pages
         /// <c>true</c> if [is at set gender / age info]; otherwise, <c>false</c>.
         /// </returns>
         void IsAtSetGenderAgeInfo();
+
+        /// <summary>
+        /// Click SKIP at Profile info.
+        /// </summary>
+        void ClickSkipProfileInfo();
 
         /// <summary>
         /// Click CONFIRM at Profile info.
@@ -142,6 +142,11 @@ namespace AC.Contracts.Pages
         bool IsAtSetLocationInfo();
 
         /// <summary>
+        /// Click SKIP at Location info.
+        /// </summary>
+        void ClickSkipLocationInfo();
+
+        /// <summary>
         /// Click CONFIRM at Location info.
         /// </summary>
         void ClickConfirmLocationInfo();
@@ -171,32 +176,22 @@ namespace AC.Contracts.Pages
         /// </summary>
         void SelectRandomPopupOption();
 
-		/// <summary>
-		/// Click {location} pop-up option.
-		/// </summary>
-		void SelectPopupOption(string location);
+        /// <summary>
+        /// Determines whether [is at set location info pop-up].
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if [is at set location info pop-up]; otherwise, <c>false</c>.
+        /// </returns>
+        bool IsAtSetLocationInfoPopup();
 
-		/// <summary>
-		/// Determines whether [is at set location info pop-up].
-		/// </summary>
-		/// <returns>
-		/// <c>true</c> if [is at set location info pop-up]; otherwise, <c>false</c>.
-		/// </returns>
-		bool IsAtSetLocationInfoPopup();
+        #endregion
 
-		/// <summary>
-		/// Determines whether [is selected Clinic correct].
-		/// </summary>
-		void IsClinicInfoCorrect(string location);
+        #region .: 5 - Complete Login :.
 
-		#endregion
-
-		#region .: 5 - Complete Login :.
-
-		/// <summary>
-		/// Click in go to homepage button.
-		/// </summary>
-		void ClickGoToHomepage();
+        /// <summary>
+        /// Click in go to homepage button.
+        /// </summary>
+        void ClickGoToHomepage();
         #endregion
 
     }

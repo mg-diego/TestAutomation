@@ -39,7 +39,8 @@ namespace US.AcceptanceTests.Steps.Communities
         [Then(@"The Chat with Communities is opened")]
         public void TheChatWithCommunitiesIsOpened()
         {
-            this.communitiesPage.IsAtCommunitiesPage();
+            var isChatWithCommunitiesEnabled = this.communitiesPage.IsAtCommunitiesPage();
+            isChatWithCommunitiesEnabled.Should().BeTrue();
         }
 
 
@@ -54,36 +55,18 @@ namespace US.AcceptanceTests.Steps.Communities
         }
 
 
-		/// <summary>
-		/// The user clicks in Whatsapp Link.
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[Then(@"The user is redirect to whatsapp Community Chat")]
-		public void TheUserIsRedirectToWhatsapp()
-		{
-			AppContainer.Container.Resolve<ISetUp>().IsAtPackage("whatsapp");
-			var result = analytics.GetAnalyticWhatsappJoinedFromDatabase();
-			analytics.IsAnalyticWhatsappJoinedSaved(result);
-			AppContainer.Container.Resolve<ISetUp>().ClickAndroidBack();
-			AppContainer.Container.Resolve<ISetUp>().ClickAndroidBack();			
-		}
-
-
         /// <summary>
-        /// The user can see the groups by gender and location.
+        /// The user joins a community.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Then(@"The user '(.*)' can see the groups for gender '(.*)' and location '(.*)'")]
-        public void TheUserCanSeeTheGroupsForGenderAndLocation(string user, string gender, string location)
+        [Then(@"The user joins a Community")]
+        public void TheUserJoinACommunity()
         {
-            TheChatWithCommunitiesIsOpened();
-
-            var userLogin = this.GetLoginUser(user);
-
-            communitiesPage.AreWhatsappGroupsCorrect(userLogin, gender, location);
+            communitiesPage.CheckWhatsappIsLaunched();
+            var result = analytics.GetAnalyticWhatsappJoinedFromDatabase();
+            AppContainer.Container.Resolve<ISetUp>().ClickAndroidBack();
+            AppContainer.Container.Resolve<ISetUp>().ClickAndroidBack();           
+            analytics.IsAnalyticWhatsappJoinedSaved(result);
         }
-
-
-
     }
 }

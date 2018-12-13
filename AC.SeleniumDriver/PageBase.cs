@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using AC.Contracts;
 using OpenQA.Selenium;
@@ -114,42 +113,13 @@ namespace AC.SeleniumDriver
             }
         }
 
-		/// <summary>
-		/// The is element enabled.
-		/// </summary>
-		/// <param name="element">
-		/// The element.
-		/// </param>
-		/// <returns>
-		/// The <see cref="bool"/>.
-		/// </returns>
-		protected bool IsElementsEnabled(IList<IWebElement> list)
-		{
-			SetUpDriver driver = new SetUpDriver();
-
-			try
-			{
-				if (list.Count < 1)
-				{
-					driver.ScrollDown();
-					return list[0].Displayed && list[0].Enabled;
-				}
-			}
-			catch (Exception ex)
-			{
-				driver.ScrollUp();
-				throw new Exception($"Element {list.ToString()} has not been found", ex);
-			}
-			return false;
-		}
-
-		/// <summary>
-		/// The wait until element.
-		/// </summary>
-		/// <param name="element">
-		/// The element.
-		/// </param>
-		private void WaitUntilElementIsClickable(IWebElement element)
+        /// <summary>
+        /// The wait until element.
+        /// </summary>
+        /// <param name="element">
+        /// The element.
+        /// </param>
+        private void WaitUntilElementIsClickable(IWebElement element)
         {
             this.webDriverWait = new WebDriverWait(this.webDriver, TimeSpan.FromSeconds(15));
             this.webDriverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));

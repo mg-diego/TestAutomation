@@ -34,4 +34,4 @@ Scenario: User can join a Community from the list
 	Given The user opens the iThemba app menu
 	And The user opens the Community Chats menu option
 	When The user clicks in join a Community
-	Then The user is redirect to whatsapp Community Chat
+	Then The user joins a Community

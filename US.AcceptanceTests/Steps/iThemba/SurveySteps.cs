@@ -70,10 +70,10 @@ namespace US.AcceptanceTests.Steps
             TheUserFulfillRandomSurveyValue();
             TheUserConfirmSurvey();
 
-            var resultLogin = analytics.GetAnalyticUserLoggedInFromDatabase(loginUser);
+            var resultLogin = analytics.GetAnalyticUserLoggedInFromDatabase();
             analytics.IsAnalyticUserLoggedInSaved(resultLogin, loginUser);
 
-            var resultSurvey = analytics.GetAnalyticExperienceRatedFromDatabase(loginUser);
+            var resultSurvey = analytics.GetAnalyticExperienceRatedFromDatabase();
             analytics.IsAnalyticLoginSurveySaved(resultSurvey, loginUser);
         }
 

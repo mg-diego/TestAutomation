@@ -5,7 +5,6 @@ using System.Linq;
 using DF.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using TechTalk.SpecFlow;
 
 namespace US.AcceptanceTests.Steps
 {
@@ -23,10 +22,10 @@ namespace US.AcceptanceTests.Steps
 
         public TestContext CurrentTestContext => context;
 
-		/// <summary>
-		/// Gets the login users.
-		/// </summary>
-		public IEnumerable<UserLogin> LoginUsers
+        /// <summary>
+        /// Gets the login users.
+        /// </summary>
+        public IEnumerable<UserLogin> LoginUsers
         {
             get
             {
@@ -53,17 +52,6 @@ namespace US.AcceptanceTests.Steps
             {
                 context = testContext;		
             }
-        }
-
-        public TestContext GetTestEnvironment()
-        {
-            TestContext testContext = StepBase.context;
-
-            testContext = StepBase.context;                        
-
-            var CurrentTestContext = testContext;
-
-            return CurrentTestContext;
         }
 
         /// <summary>

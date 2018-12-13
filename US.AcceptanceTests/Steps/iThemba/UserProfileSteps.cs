@@ -62,20 +62,9 @@ namespace US.AcceptanceTests.Steps.UserProfile
         }
 
         /// <summary>
-        /// The My Profile menu is opened.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Then(@"The user is at Clinic Location page at My Profile")]
-        public void TheUserIsAtClinicLocationPageAtMyProfile()
-        {
-            userProfilePage.IsAtClinicLocationProfilePage().Should().BeTrue();
-        }
-
-        /// <summary>
         /// The user clicks Next button at demograph info page.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Given(@"The user clicks Next button at demograph info page")]
         [When(@"The user clicks Next button at demograph info page")]
         public void TheUserClickNextButtonAtDemographInfoPage()
         {

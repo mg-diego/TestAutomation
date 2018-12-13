@@ -107,58 +107,49 @@
         [JsonProperty(PropertyName = "ReleaseResultVertical")]
         public List<string> ReleaseResultVertical { get; set; }
 
-		/// <summary>
-		/// Gets or sets the uuid.
-		/// </summary>
-		/// <value>
-		/// The uuid.
-		/// </value>
-		[JsonProperty(PropertyName = "uuid")]
+        /// <summary>
+        /// Gets or sets the latestTestValueQuickPickUp.
+        /// </summary>
+        /// <value>
+        /// The latestTestValueQuickPickUp.
+        /// </value>
+        [JsonProperty(PropertyName = "uuid")]
         public string Uuid { get; set; }
 
-		/// <summary>
-		/// Gets or sets the hash.
-		/// </summary>
-		/// <value>
-		/// The latestTestValueQuickPickUp.
-		/// </valuehash
-		[JsonProperty(PropertyName = "hash")]
-		public string Hash { get; set; }
-
-		/// <summary>
-		/// Gets or sets the gender.
-		/// </summary>
-		/// <value>
-		/// The gender.
-		/// </value>
-		[JsonProperty(PropertyName = "gender")]
+        /// <summary>
+        /// Gets or sets the latestTestValueQuickPickUp.
+        /// </summary>
+        /// <value>
+        /// The latestTestValueQuickPickUp.
+        /// </value>
+        [JsonProperty(PropertyName = "gender")]
         public string Gender { get; set; }
 
-		/// <summary>
-		/// Gets or sets the city.
-		/// </summary>
-		/// <value>
-		/// The city.
-		/// </value>
-		[JsonProperty(PropertyName = "city")]
+        /// <summary>
+        /// Gets or sets the latestTestValueQuickPickUp.
+        /// </summary>
+        /// <value>
+        /// The latestTestValueQuickPickUp.
+        /// </value>
+        [JsonProperty(PropertyName = "city")]
         public string City { get; set; }
 
-		/// <summary>
-		/// Gets or sets the neighbourhood.
-		/// </summary>
-		/// <value>
-		/// The neighbourhood.
-		/// </value>
-		[JsonProperty(PropertyName = "neighbourhood")]
+        /// <summary>
+        /// Gets or sets the latestTestValueQuickPickUp.
+        /// </summary>
+        /// <value>
+        /// The latestTestValueQuickPickUp.
+        /// </value>
+        [JsonProperty(PropertyName = "neighbourhood")]
         public string Neighbourhood { get; set; }
 
-		/// <summary>
-		/// Gets or sets the clinic.
-		/// </summary>
-		/// <value>
-		/// The clinic.
-		/// </value>
-		[JsonProperty(PropertyName = "clinic")]
+        /// <summary>
+        /// Gets or sets the latestTestValueQuickPickUp.
+        /// </summary>
+        /// <value>
+        /// The latestTestValueQuickPickUp.
+        /// </value>
+        [JsonProperty(PropertyName = "clinic")]
         public string Clinic { get; set; }
 
         /// <summary>

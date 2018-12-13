@@ -17,24 +17,21 @@ namespace AC.Contracts.Pages
         /// </returns>
         bool IsAtAboutIThembaPage();
 
-		/// <summary>
-		/// Determines whether [is yeoville phone number correct]
-		/// </summary>
-		void IsPhoneNumberCorrectYeoville();
+        /// <summary>
+        /// Determines whether [is Contact EMail correct]
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if [is Contact EMail correct]; otherwise, <c>false</c>.
+        /// </returns>
+        bool IsContactMailCorrect();
 
-		/// <summary>
-		/// Determines whether [is hillbrow phone number correct]
-		/// </summary>
-		void IsPhoneNumberCorrectHillbrow();
+        /// <summary>
+        /// Determines whether [is Contact Phone correct]
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if [is Contact Phone correct]; otherwise, <c>false</c>.
+        /// </returns>
+        bool IsContactPhoneCorrect();
 
-		/// <summary>
-		/// Click in Whatsapp Link button
-		/// </summary>
-		void ClickWhatsappLinkButton();
-
-		/// <summary>
-		/// Click in Phone Contact button
-		/// </summary>
-		void ClickContactPhoneNumberButton();
-	}
+    }
 }

@@ -40,10 +40,10 @@ namespace CL.Containers
                 buildContainer.RegisterType<IBloodResultsPage, BloodResultsPage>();
                 buildContainer.RegisterType<ICommunitiesPage, CommunitiesPage>();
                 buildContainer.RegisterType<IScanBarcodePage, ScanBarcodePage>();
+                buildContainer.RegisterType<IQuickPickUpPage, QuickPickUpPage>();
                 buildContainer.RegisterType<IUserProfilePage, UserProfilePage>();
                 buildContainer.RegisterType<IAboutPage, AboutPage>();
                 buildContainer.RegisterType<ISurveyPage, SurveyPage>();
-                buildContainer.RegisterType<INoConnectivityPage, NoConnectivityPage>();
 
                 buildContainer.RegisterType<ILoginBasePage, LoginBasePage>();
 

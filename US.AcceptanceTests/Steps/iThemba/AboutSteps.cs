@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Threading;
 using AC.Contracts;
 using AC.Contracts.Pages;
 using FluentAssertions;
@@ -28,60 +27,27 @@ namespace US.AcceptanceTests.Steps.About
             this.setUp = setUp;
         }
 
-
         /// <summary>
         /// The About iThemba menu is opened.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         [Then(@"The About iThemba menu is opened")]
-        public void TheAboutIthembaMenuIsOpened()
+        public void TheMyProfileMenuIsOpened()
         {
             aboutPage.IsAtAboutIThembaPage().Should().BeTrue();
         }
-
 
         /// <summary>
         /// The About iThemba contact info is correct.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Then(@"The '(.*)' About iThemba contact info is correct")]
-        public void IsContactInfoCorrect(string clinic)
+        [Then(@"The About iThemba contact info is correct")]
+        public void IsContactInfoCorrect()
         {
-			TheAboutIthembaMenuIsOpened();
-
-			switch (clinic)
-			{
-				case "Yeoville":
-					aboutPage.IsPhoneNumberCorrectYeoville();
-					break;
-				case "Hillbrow":
-					aboutPage.IsPhoneNumberCorrectHillbrow();
-					break;
-			}
+            aboutPage.IsContactPhoneCorrect().Should().BeTrue();
+            aboutPage.IsContactMailCorrect().Should().BeTrue();
         }
 
 
-		/// <summary>
-		/// The user clicks in Whatsapp Link.
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[When(@"The user clicks in Whatsapp Link")]
-		public void TheUserClikcsInWhatsappLink()
-		{
-			aboutPage.ClickWhatsappLinkButton();
-		}
-
-
-		/// <summary>
-		/// The user clicks in Whatsapp Link.
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[Then(@"The user is redirect to whatsapp contact phone")]
-		public void TheUserIsRedirectToWhatsapp()
-		{
-			setUp.IsAtPackage("whatsapp");
-			setUp.ClickAndroidBack();
-			setUp.ClickAndroidBack();
-		}
-	}
+    }
 }

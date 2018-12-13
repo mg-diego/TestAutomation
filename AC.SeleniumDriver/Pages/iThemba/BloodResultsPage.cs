@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AC.Contracts;
 using AC.Contracts.Pages;
 using DF.Entities;
@@ -67,14 +68,14 @@ namespace AC.SeleniumDriver.Pages.Login
         [FindsBy(How = How.Id, Using = "txtTipFoodAndExcercise")]
         private IWebElement txtTipFood { get; set; }
 
-        [FindsBy(How = How.Id, Using = "txtTipProtectiona")]
-		private IList<IWebElement> txtTipProtection { get; set; }
+        [FindsBy(How = How.Id, Using = "txtTipProtection")]
+        private IWebElement txtTipProtection { get; set; }
 
         [FindsBy(How = How.Id, Using = "iconTipFoodAndExcercise")]
         private IWebElement iconTipFoodAndExcercise { get; set; }
 
         [FindsBy(How = How.Id, Using = "iconTipProtection")]
-        private IList<IWebElement> iconTipProtection { get; set; }
+        private IWebElement iconTipProtection { get; set; }
 
         #endregion
 
@@ -202,35 +203,11 @@ namespace AC.SeleniumDriver.Pages.Login
 
         #endregion
 
-        #region .: Exit IThemba pop up window
-
-        [FindsBy(How = How.XPath, Using = "//*[(@text='Yes, exit') and (@class='android.widget.Button')]")]
-        private IWebElement btnYesExit { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//*[(@text='No') and (@class='android.widget.Button')]")]
-        private IWebElement btnNoExit { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//*[(@text='Are you sure you want to exit iThemba?') and (@class='android.widget.TextView')]")]
-        private IWebElement txtExitApp { get; set; }
-
-        #endregion
-
-        #region .: Invalid Results :.
-
-        [FindsBy(How = How.XPath, Using = "//*[(@text='This test did not work') and (@class='android.widget.TextView')]")]
-        private IWebElement txtInvalidTestTitle { get; set; }
-
-        #endregion
-
-
-
         #region .: Expected Content :.
 
         private string expectedEmoticonTxtGreen = "You are in top shape!";
         private string expectedEmoticonTxtOrange = "Please take care";
         private string expectedEmoticonTxtRed = "Please take extra care";
-
-        private string expectedInvalidTestBubble = "Please check with your clinic to see if you need to repeat the test";
 
         private string expectedBubbleMedsRed = "Are you taking your pills correctly?";
         private string expectedBubbleMedsOrange = "Keep taking your pills every day at the same time";
@@ -251,7 +228,30 @@ namespace AC.SeleniumDriver.Pages.Login
 
         #endregion
 
+        #region .: No network condition Elements :.
 
+        [FindsBy(How = How.Id, Using = "RetryConection")]
+        [CacheLookup]
+        private IWebElement btnRetryConnection { get; set; }
+
+        [FindsBy(How = How.Id, Using = "CancelConection")]
+        [CacheLookup]
+        private IWebElement btnCancelConnection { get; set; }
+
+        #endregion
+
+        #region .: Exit IThemba pop up window
+
+        [FindsBy(How = How.XPath, Using = "//*[(@text='Yes, exit') and (@class='android.widget.Button')]")]
+        private IWebElement btnYesExit { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[(@text='No') and (@class='android.widget.Button')]")]
+        private IWebElement btnNoExit { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[(@text='Are you sure you want to exit iThemba?') and (@class='android.widget.TextView')]")]
+        private IWebElement txtExitApp { get; set; }
+
+        #endregion
 
 
 
@@ -279,7 +279,7 @@ namespace AC.SeleniumDriver.Pages.Login
             this.WaitUntil(2);
             if (txtBloodResults.Count >= 1)
             {
-				return true;
+                return true;
             }
             else
                 return false;
@@ -326,9 +326,8 @@ namespace AC.SeleniumDriver.Pages.Login
                         Assert.That(IsElementEnabled(iconTipFoodAndExcercise), Is.EqualTo(true), "iconTipFoodAndExcercise is not displayed");
                         Assert.That(txtTipFood.Text, Is.EqualTo(expectedTipFood), "txtTipFood is wrong");
 
-                        Assert.That(IsElementsEnabled(iconTipProtection), Is.EqualTo(true), "iconTipProtection is not displayed");
-						Assert.That(IsElementsEnabled(txtTipProtection), Is.EqualTo(true), "txtTipProtection is not displayed");
-						Assert.That(txtTipProtection[0].Text, Is.EqualTo(expectedTipProtection), "txtTipProtection is wrong");
+                        //Assert.That(IsElementEnabled(iconTipProtection), Is.EqualTo(true), "iconTipProtection is not displayed");
+                        //Assert.That(txtTipProtection.Text, Is.EqualTo(expectedTipProtection), "txtTipProtection is wrong");
                     });
                     break;
 
@@ -378,18 +377,6 @@ namespace AC.SeleniumDriver.Pages.Login
                         //Assert.That(IsElementEnabled(iconTipProtection), Is.EqualTo(true), "iconTipProtection is not displayed");
                         //Assert.That(txtTipProtection.Text, Is.EqualTo(expectedTipProtection), "txtTipProtection is wrong");
                     });
-                    break;
-
-                case "invalid":
-                    Assert.That(txtBubbleHeader[0].Text, Is.EqualTo(expectedInvalidTestBubble), "txtBubbleHeader is wrong");
-                    Assert.That(btnShowBarcode.Count, Is.EqualTo(1), "btnShowBarcode appears "+ btnShowBarcode.Count+" times");
-
-                    Assert.That(IsElementEnabled(iconTipFoodAndExcercise), Is.EqualTo(true), "iconTipFoodAndExcercise is not displayed");
-                    Assert.That(txtTipFood.Text, Is.EqualTo(expectedTipFood), "txtTipFood is wrong");
-
-                    Assert.That(IsElementsEnabled(iconTipProtection), Is.EqualTo(true), "iconTipProtection is not displayed");
-                    Assert.That(txtTipProtection[0].Text, Is.EqualTo(expectedTipProtection), "txtTipProtection is wrong");
-
                     break;
             }
             return true;
@@ -668,28 +655,10 @@ namespace AC.SeleniumDriver.Pages.Login
             Assert.Multiple(() =>
             {
                 Assert.That(IsElementEnabled(txtPastResultsHeader), Is.EqualTo(true), "txtPastResultsHeader is not displayed");
-                Assert.That(btnShowBarcode.Count, Is.EqualTo(1), "Imported result show barcode is displayed");
-                Assert.That(ReleaseDateHorizontalList.Count, Is.EqualTo(2), "ReleaseDateHorizontalList is not displayed");
-                Assert.That(ReleaseDateVerticalList.Count, Is.EqualTo(2), "ReleaseDateVerticalList is not displayed");
-                Assert.That(ReleaseResultVertical.Count, Is.EqualTo(2), "ReleaseResultVertical is not displayed");
-            });
-        }
-
-        /// <summary>
-        /// Determines whether is at Past Results with invalid results
-        /// </summary>
-        /// <returns>
-        public void IsAtPastResultsWithInvalidResults()
-        {
-            WaitUntilElementIsVisible(txtPastResultsHeader);
-
-            Assert.Multiple(() =>
-            {
-                Assert.That(IsElementEnabled(txtPastResultsHeader), Is.EqualTo(true), "txtPastResultsHeader is not displayed");
-                Assert.That(btnShowBarcode.Count, Is.EqualTo(1), "Invalid result show barcode is displayed");
-                Assert.That(ReleaseDateHorizontalList.Count, Is.EqualTo(1), "ReleaseDateHorizontalList is not displayed");
-                Assert.That(ReleaseDateVerticalList.Count, Is.EqualTo(1), "ReleaseDateVerticalList is not displayed");
-                Assert.That(ReleaseResultVertical.Count, Is.EqualTo(1), "ReleaseResultVertical is not displayed");
+                Assert.That(btnShowBarcode.Count, Is.LessThan(2), "Imported result show barcode is displayed");
+                Assert.That(ReleaseDateHorizontalList.Count, Is.GreaterThan(0), "ReleaseDateHorizontalList is not displayed");
+                Assert.That(ReleaseDateVerticalList.Count, Is.GreaterThan(0), "ReleaseDateVerticalList is not displayed");
+                Assert.That(ReleaseResultVertical.Count, Is.GreaterThan(0), "ReleaseResultVertical is not displayed");
             });
         }
 
@@ -701,15 +670,8 @@ namespace AC.SeleniumDriver.Pages.Login
             Assert.Multiple(() =>
             {
                 Assert.That(IsElementEnabled(btnCloseBarcode), Is.EqualTo(true), "btnCloseBarcode is not displayed");
-				if ((user.UserId == "ResultsOnTheWayMultiple" || user.UserId == "UserWithMultipleInvalidResults"))
-				{
-					Assert.That(txtBarcodeId.Text, Is.EqualTo(user.BarcodeIdList[user.BarcodeIdList.Count-1]), "txtBarcodeId is not correct");
-				}
-				else
-				{
-					Assert.That(txtBarcodeId.Text, Is.EqualTo(user.BarcodeIdList[0]), "txtBarcodeId is not correct");
-				}
-			});
+                Assert.That(txtBarcodeId.Text, Is.EqualTo(user.BarcodeIdList[0]), "txtBarcodeId is not correct");
+            });
         }
 
         /// <summary>
@@ -794,43 +756,33 @@ namespace AC.SeleniumDriver.Pages.Login
 
         #endregion
 
-
-        #region .: Invalid Results :.
+        #region .: No Connectivity :.
 
         /// <summary>
-        /// Determines whether [is at Unique Invalid Blood Results page].
+        /// Clicks the Try Again button
         /// </summary>
-        public void IsAtUniqueInvalidBloodResultsPage(UserLogin userLogin)
+        public void ClickTryConnectionAgain()
         {
-            Assert.Multiple(() =>
-            {
-                Assert.That(IsElementEnabled(btnOpenMenuDrawer), Is.EqualTo(true), "btnOpenMenuDrawer is not displayed");
-                Assert.That(IsElementEnabled(txtBloodResults[0]), Is.EqualTo(true), "txtBloodResults[0] is not displayed");
-                Assert.That(btnGoToPastResultsList.Count, Is.EqualTo(0), "btnGoToPastResults is displayed");
-                Assert.That(IsLastResultDateCorrect(userLogin.latestTestDateBloodResults), Is.EqualTo(true), "latestTestDateBloodResults is not correct");
-                Assert.That(IsElementEnabled(txtInvalidTestTitle), Is.EqualTo(true), "txtInvalidTestTitle is not displayed");
-                Assert.That(AreUserTipsCorrect("invalid"), Is.EqualTo(true), "UserTips invalid are not correct");
-                Assert.That(btnShowBarcode.Count, Is.EqualTo(1), "btnShowBarcode is not displayed");
-
-            });
+            ClickElement(btnRetryConnection);
         }
 
         /// <summary>
-        /// Determines whether [is at Multiple Invalid Blood Results page].
+        /// Determines whether [is at no Network Screen].
         /// </summary>
-        public void IsAtMultipleInvalidBloodResultsPage(UserLogin userLogin)
+        /// <returns>
+        /// <c>true</c> if [is at no Network Screen]; otherwise, <c>false</c>.
+        /// </returns>
+        public bool IsAtNoNetworkScreen()
         {
             Assert.Multiple(() =>
             {
-                Assert.That(IsElementEnabled(btnOpenMenuDrawer), Is.EqualTo(true), "btnOpenMenuDrawer is not displayed");
-                Assert.That(IsElementEnabled(txtBloodResults[0]), Is.EqualTo(true), "txtBloodResults[0] is not displayed");
-                Assert.That(btnGoToPastResultsList.Count, Is.EqualTo(1), "btnGoToPastResults is not displayed");
-                Assert.That(IsLastResultDateCorrect(userLogin.latestTestDateBloodResults), Is.EqualTo(true), "latestTestDateBloodResults is not correct");
-                Assert.That(IsElementEnabled(txtInvalidTestTitle), Is.EqualTo(true), "txtInvalidTestTitle is not displayed");
-                Assert.That(AreUserTipsCorrect("invalid"), Is.EqualTo(true), "UserTips invalid are not correct");
-                Assert.That(btnShowBarcode.Count, Is.EqualTo(1), "btnShowBarcode is not displayed");
+                Assert.That(IsElementEnabled(btnRetryConnection), Is.EqualTo(true), "btnRetryConnection is not displayed");
+                Assert.That(IsElementEnabled(btnCancelConnection), Is.EqualTo(true), "btnCancelConnection is not displayed");
             });
+
+            return true;
         }
+
         #endregion
 
     }

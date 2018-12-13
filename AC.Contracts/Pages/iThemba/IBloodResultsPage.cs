@@ -152,12 +152,6 @@ namespace AC.Contracts.Pages
         /// <returns>
         void IsAtPastResultsWithImportedResults();
 
-        /// <summary>
-        /// Determines whether is at Past Results with invalid results
-        /// </summary>
-        /// <returns>
-        void IsAtPastResultsWithInvalidResults();
-
         #endregion
 
         #region .: Exit iThemba :.
@@ -182,18 +176,21 @@ namespace AC.Contracts.Pages
 
         #endregion
 
-        #region .: Invalid Results :.
+        #region .: No Connectivity :.
 
         /// <summary>
-        /// Determines whether [is at Unique Invalid Blood Results page].
+        /// Clicks the Try Again button
         /// </summary>
-        void IsAtUniqueInvalidBloodResultsPage(UserLogin userLogin);
+        void ClickTryConnectionAgain();
 
         /// <summary>
-        /// Determines whether [is at Multiple Invalid Blood Results page].
+        /// Determines whether [is at no Network Screen].
         /// </summary>
-        void IsAtMultipleInvalidBloodResultsPage(UserLogin userLogin);
-
+        /// <returns>
+        /// <c>true</c> if [is at no Network Screen]; otherwise, <c>false</c>.
+        /// </returns>
+        bool IsAtNoNetworkScreen();
         #endregion
+
     }
 }

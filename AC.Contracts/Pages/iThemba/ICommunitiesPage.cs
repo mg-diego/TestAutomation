@@ -12,7 +12,10 @@ namespace AC.Contracts.Pages
         /// <summary>
         /// Determines whether [is at chat with communities page].
         /// </summary>
-        void IsAtCommunitiesPage();
+        /// <returns>
+        /// <c>true</c> if [is at chat with communities page]; otherwise, <c>false</c>.
+        /// </returns>
+        bool IsAtCommunitiesPage();
 
         /// <summary>
         /// Join a random Whatsapp Chat Community.
@@ -26,11 +29,5 @@ namespace AC.Contracts.Pages
         /// <c>true</c> if [iWhatsApp app is launched]; otherwise, <c>false</c>.
         /// </returns>
         bool CheckWhatsappIsLaunched();
-
-        /// <summary>
-        /// Determines whether WhatsApp groups are correct.
-        /// </summary>
-        /// <returns>
-        void AreWhatsappGroupsCorrect(UserLogin userLogin, string gender, string location);
     }
 }

@@ -269,7 +269,8 @@ namespace AC.SeleniumDriver.Pages
         /// </returns>
         public bool IsAtClinicLocationProfilePage()
         {
-            return inputCity.Displayed;
+            WaitUntilElementIsVisible(txtMyProfileClinicLocationTittle);
+            return txtMyProfileClinicLocationTittle.Displayed;
         }
 
         /// <summary>

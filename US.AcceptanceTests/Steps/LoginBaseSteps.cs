@@ -101,8 +101,8 @@ namespace US.AcceptanceTests.Steps.Login
             try
             {
                 // Take a screenshot.
-                //var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.ScenarioInfo.Title);
-                //CurrentTestContext.AddResultFile(screenshotPathFile);               
+                var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.ScenarioInfo.Title);
+                CurrentTestContext.AddResultFile(screenshotPathFile);               
             }
             catch
             {

@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -27,11 +28,10 @@ namespace US.AcceptanceTests.Steps.Login
         /// Initializes a new instance of the <see cref="LoginSteps" /> class.
         /// </summary>
         /// <param name="setUp">The set up.</param>
-        /// <param name="loginPage">The login page.</param>
-
-        public LoginSteps(ISetUp setUp, ILoginPage loginPage, IAnalytics analytics)
+        public LoginSteps(ISetUp setUp, IAnalytics analytics)
         {
-            this.loginPage = loginPage;
+            TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+            this.loginPage = AppContainer.Container.Resolve<ILoginPage>();
             this.setUp = setUp;
             this.analytics = analytics;
         }
@@ -42,7 +42,7 @@ namespace US.AcceptanceTests.Steps.Login
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         [Given(@"The user '(.*)' enters his phone number")]
-        [When(@"The user '(.*)' enters his phone number")]
+        [When(@"The user enters his phone number")]
         public void TheUSerEnterHisPhoneNumber(string user)
         {
             var loginUser = this.GetLoginUser(user);
@@ -75,18 +75,18 @@ namespace US.AcceptanceTests.Steps.Login
             loginPage.ClickSendCodeAgain();
         }
 
-		/// <summary>
-		/// The user receives the confirmation code
-		/// </summary>
-		/// <param name="user">The user.</param>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        /// <summary>
+        /// The user receives the confirmation code
+        /// </summary>
+        /// <param name="user">The user.</param>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         [Then(@"The user '(.*)' receives the confirmation code")]
         public void TheUserReceivesTheConfirmationCode(string user)
         {
             var loginUser = this.GetLoginUser(user);
             loginPage.GetConfirmationCode(loginUser);
             loginPage.ClickSendConfirmationCode();
-            var result = analytics.GetAnalyticUserLoggedInFromDatabase(loginUser);
+            var result = analytics.GetAnalyticUserLoggedInFromDatabase();
             analytics.IsAnalyticUserLoggedInSaved(result, loginUser);
         }
 
@@ -102,34 +102,6 @@ namespace US.AcceptanceTests.Steps.Login
             TheUserClickInSendPhoneNumber();
             TheUserReceivesTheConfirmationCode(user);
         }
-
-
-        /// <summary>
-        /// The user receives the confirmation code (without Analytics)
-        /// </summary>
-        /// <param name="user">The user.</param>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Then(@"The new user '(.*)' receives the confirmation code")]
-        public void TheNewUserReceivesTheConfirmationCode(string user)
-        {
-            var loginUser = this.GetLoginUser(user);
-            loginPage.GetConfirmationCode(loginUser);
-            loginPage.ClickSendConfirmationCode();
-        }
-
-        /// <summary>
-        /// The user completes the SMS authentication process (without Analytics)
-        /// </summary>
-        /// <param name="user">The user.</param>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Given(@"The new user '(.*)' completes the SMS authentication process")]
-        public void TheNewUserCompleteSMSAuthentication(string user)
-        {
-            TheUSerEnterHisPhoneNumber(user);
-            TheUserClickInSendPhoneNumber();
-            TheNewUserReceivesTheConfirmationCode(user);
-        }
-
 
         /// <summary>
         /// The user completes the SMS authentication process
@@ -159,29 +131,16 @@ namespace US.AcceptanceTests.Steps.Login
             //TheUserCanCompleteLogin();
         }
 
-        /// <summary>
-        /// The user is at Enter SMS confirmation code
-        /// </summary>
-        /// <param name="user">The user.</param>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Given(@"The user is at Enter SMS confirmation code")]
-        public void TheUserIsAtEnterSMSCode()
-        {
-            loginPage.IsAtEnterSMSCodePage();
-        }
-        
-
 
         /// <summary>
         /// The user sets Profile info
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Given(@"The user sets it's profile info")]
         [When(@"The user sets it's profile info")]
         public void TheUserSetsProfileInfo()
         {
             loginPage.IsAtSetGenderAgeInfo();
-            loginPage.SelectRandomGender();
+            //loginPage.SelectRandomGender();
             setUp.MoveSeekBar(loginPage.GetAgeSelectorWidthX(), loginPage.GetAgeSelectorTotalWidth(), loginPage.GetAgeSelectorWidthY());
             loginPage.ClickConfirmProfileInfo();
         }
@@ -193,10 +152,13 @@ namespace US.AcceptanceTests.Steps.Login
         [When(@"The user sets it's location info")]
         public void TheUserSetsLocationInfo()
         {
-			TheUserSetsCityLocation();
+            //City
+            loginPage.ClickInputCityInfo();
+            loginPage.IsAtSetLocationInfoPopup().Should().BeTrue();
+            loginPage.SelectRandomPopupOption();
 
-			//Neighbourhood
-			loginPage.ClickInputNeighbourhoodInfo();
+            //Neighbourhood
+            loginPage.ClickInputNeighbourhoodInfo();
             loginPage.IsAtSetLocationInfoPopup().Should().BeTrue();
             loginPage.SelectRandomPopupOption();
 
@@ -208,89 +170,38 @@ namespace US.AcceptanceTests.Steps.Login
             loginPage.ClickConfirmLocationInfo();
         }
 
-		/// <summary>
-		/// The user sets Location info changing Neighbourhood
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[When(@"The user sets it's location info changing Neighbourhood")]
-		public void TheUserSetsLocationInfoWithNeighbourhoodChange()
-		{
-			TheUserSetsCityLocation();
-			TheUserSetsNeighbourhoodLocation("Yeoville");
-			TheUserSetsNeighbourhoodLocation("Hillbrow");
-			TheUserSetsClinicLocation();
-			loginPage.ClickConfirmLocationInfo();
-		}
+        /// <summary>
+        /// The user skips Profile info
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        [When(@"The user skips it's profile info")]
+        public void TheUserSkipsProfileInfo()
+        {
+            loginPage.ClickSkipProfileInfo();
+        }
 
-		/// <summary>
-		/// The user sets City info
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[When(@"The user selects a City")]
-		public void TheUserSetsCityLocation()
-		{
-			//City
-			loginPage.ClickInputCityInfo();
-			loginPage.IsAtSetLocationInfoPopup().Should().BeTrue();
-			loginPage.SelectRandomPopupOption();
-		}
+        /// <summary>
+        /// The user skips Location info
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        [When(@"The user skips it's location info")]
+        public void TheUserSkipsLocationInfo()
+        {
+            loginPage.ClickSkipLocationInfo();
+        }
 
-		/// <summary>
-		/// The user sets Neighbourhood info
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[When(@"The user selects Neighbourhood '(.*)'")]
-		public void TheUserSetsNeighbourhoodLocation(string location)
-		{
-			//Neighbourhood
-			loginPage.ClickInputNeighbourhoodInfo();
-			loginPage.IsAtSetLocationInfoPopup().Should().BeTrue();
-			loginPage.SelectPopupOption(location);
-		}
-
-		/// <summary>
-		/// The user sets Clinic info
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[Then(@"The user selects Clinic")]
-		public void TheUserSetsClinicLocation()
-		{
-			//Clinic
-			loginPage.ClickInputClinicInfo();
-			loginPage.IsAtSetLocationInfoPopup().Should().BeTrue();
-			loginPage.SelectRandomPopupOption();
-		}
-
-		/// <summary>
-		/// The user sets Neighbourhood info
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-		[Then(@"The Neighbourhood '(.*)' is selected")]
-		public void IsClinicSelected(string clinic)
-		{
-			loginPage.IsClinicInfoCorrect(clinic);
-		}
-
-		
-		/// <summary>
-		/// The user can complete the login
-		/// </summary>
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [Then(@"The new user (.*) can complete the login")]
+        /// <summary>
+        /// The user can complete the login
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        [Then(@"The user (.*) can complete the login")]
         public void TheUserCanCompleteLogin(string user)
         {
             var loginUser = this.GetLoginUser(user);
             loginPage.ClickGoToHomepage();
-
-			var result = analytics.GetAnalyticUserBirthdayUpdatedFromDatabase();
-            analytics.IsAnalyticUserBirthdayUpdatedSaved(result, loginUser);
-
-			result = analytics.GetAnalyticUserGenderUpdatedFromDatabase();
-			analytics.IsAnalyticUserGenderUpdatedSaved(result, loginUser);
-
-			result = analytics.GetAnalyticUserLocationUpdatedFromDatabase();
-			analytics.IsAnalyticUserLocationUpdatedSaved(result, loginUser);
-		}
+            var result = analytics.GetAnalyticUserLoggedInFromDatabase();
+            analytics.IsAnalyticUserLoggedInSaved(result, loginUser);
+        }
 
 
         /// <summary>
@@ -311,13 +222,17 @@ namespace US.AcceptanceTests.Steps.Login
 
                 //Phone confirmation
                 TheUserCompleteSMSAuthentication(user);
+
+                //TheUserSkipsProfileInfo();
+                //TheUserSkipsLocationInfo();
+                //TheUserCanCompleteLogin();
             }
             catch (Exception e)
             {
                 throw new Exception($"User {user} could not login.", e);
             }
 
-            var result = analytics.GetAnalyticBarcodeDataRequestedFromDatabase(loginUser);
+            var result = analytics.GetAnalyticBarcodeDataRequestedFromDatabase();
             analytics.IsAnalyticBarcodeDataRequestedSaved(result, loginUser);
         }
 
@@ -343,14 +258,26 @@ namespace US.AcceptanceTests.Steps.Login
                 //TheUserSkipsProfileInfo();
                 setUp.SetAirplaneMode();
                 //TheUserCanCompleteLogin();
-                AppContainer.Container.Resolve<INoConnectivityPage>().IsAtNoConnectivityPage();
+                TheUserCanSeeNoNetworkScreen();
             }
             catch (Exception e)
             {
                 throw new Exception($"User {user} does not exist.", e);
             }
         }
-        
+
+
+        /// <summary>
+        /// The user recovers Network and click in Try Again.
+        /// </summary>
+        [When(@"The user recovers Network and click in Try Again")]
+        public void TheUserTriesToLoginWithTheFollowingUser()
+        {
+            setUp.SetDataOnlyMode();
+            AppContainer.Container.Resolve<IBloodResultsPage>().ClickTryConnectionAgain();
+        }
+
+
 
         /// <summary>
         /// The user tries to login with the following user.
@@ -365,14 +292,22 @@ namespace US.AcceptanceTests.Steps.Login
 
 
 
-
+        /// <summary>
+        /// The user can see the No connection to network message.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        [Then(@"The user can see the No connection to network message")]
+        public void TheUserCanSeeNoNetworkScreen()
+        {
+            //TO DO
+            AppContainer.Container.Resolve<IBloodResultsPage>().IsAtNoNetworkScreen().Should().BeTrue();
+        }
 
         /// <summary>
         /// The user can logout from the application.
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         [Then(@"The user can logout from the application")]
-        [Then(@"The user is at enter Phone Number page")]
         public void TheUserCanLogout()
         {
             loginPage.IsAtEnterPhoneNumberPage();
@@ -419,8 +354,11 @@ namespace US.AcceptanceTests.Steps.Login
         [When(@"The user '(.*)' login for the 3rd time")]
         public void TheUserLogin3rdTime(string user)
         {
-			//1st Login
-			TheUserCompleteSMSAuthentication(user);
+            //1st Login
+            TheUserCompleteSMSAuthentication(user);
+            //TheUserSkipsProfileInfo();
+            //TheUserSkipsLocationInfo();
+            //TheUserCanCompleteLogin();
             AppContainer.Container.Resolve<IMenuDrawerPage>().OpenDrawerMenu();
             AppContainer.Container.Resolve<IMenuDrawerPage>().ClickLogout();
 

@@ -99,7 +99,7 @@ namespace AC.SeleniumDriver.Pages.Login
         [FindsBy(How = How.Id, Using = "inputNeighbourhood")]
         private IWebElement inputNeighbourhood { get; set; }
 
-		[FindsBy(How = How.Id, Using = "inputClinic")]
+        [FindsBy(How = How.Id, Using = "inputClinic")]
         private IWebElement inputClinic { get; set; }
 
         [FindsBy(How = How.Id, Using = "android:id/text1")]
@@ -222,18 +222,6 @@ namespace AC.SeleniumDriver.Pages.Login
         #region .: 2 - Get SMS code :.
 
         /// <summary>
-        /// Determines whether [is at enter SMS code page].
-        /// </summary>
-        public void IsAtEnterSMSCodePage()
-        {
-            Assert.Multiple(() =>
-            {
-                Assert.That(IsElementEnabled(btnSendConfirmationCode), Is.EqualTo(true), "btnSendConfirmationCode is not displayed");
-                Assert.That(IsElementEnabled(inputConfirmationCode), Is.EqualTo(true), "inputConfirmationCode is not displayed");
-            });
-
-        }
-        /// <summary>
         /// Click in send code again button.
         /// </summary>
         public void ClickSendCodeAgain()
@@ -286,7 +274,7 @@ namespace AC.SeleniumDriver.Pages.Login
                 //Gets the two first characters from the last SMS received
                 secondsAgo = Int32.Parse(codeArrivedList[0].Text.Substring(0, 2));
             }
-            while (secondsAgo > 20);
+            while (secondsAgo > 15);
             
             //Gets the SMS value
             confirmationCode = SeleniumDriver.FindElement(By.XPath("//*[contains(text(), 'The activation code is')]"));
@@ -310,7 +298,7 @@ namespace AC.SeleniumDriver.Pages.Login
             this.WaitUntil(2);
             SendKeysElement(inputConfirmationCode, "123");
 
-            randomTimes = random.Next(1, 5);
+            randomTimes = random.Next(0, 5);
             for (int i = 0; i < randomTimes; i++)
             {
                 ClickSendConfirmationCode();
@@ -335,9 +323,18 @@ namespace AC.SeleniumDriver.Pages.Login
             {
                 Assert.That(IsElementEnabled(txtDemographicTittle), Is.EqualTo(true), "txtDemographicTittle is not displayed");
                 Assert.That(IsElementEnabled(ageSelectorBar), Is.EqualTo(true), "ageSelectorBar is not displayed");
-                Assert.That(IsElementEnabled(btnConfirmGenderAge), Is.EqualTo(false), "btnConfirmGenderAge is not disabled");
+                Assert.That(IsElementEnabled(btnSkipGenderAge), Is.EqualTo(true), "btnSkipGenderAge is not enabled");
+                //Assert.That(IsElementEnabled(btnConfirmGenderAge), Is.EqualTo(true), "btnConfirmGenderAge is not displayed");
             });
             return;
+        }
+
+        /// <summary>
+        /// Click SKIP at Profile info.
+        /// </summary>
+        public void ClickSkipProfileInfo()
+        {
+            ClickElement(btnSkipGenderAge);
         }
 
         /// <summary>
@@ -409,6 +406,13 @@ namespace AC.SeleniumDriver.Pages.Login
             return IsElementEnabled(txtMyProfileClinicLocationTittle);
         }
 
+        /// <summary>
+        /// Click SKIP at Location info.
+        /// </summary>
+        public void ClickSkipLocationInfo()
+        {
+            ClickElement(btnSkipClinicLocation);
+        }
 
         /// <summary>
         /// Click CONFIRM at Location info.
@@ -451,7 +455,7 @@ namespace AC.SeleniumDriver.Pages.Login
         }
 
         /// <summary>
-        /// Click random pop-up option.
+        /// Click pop-up option 1.
         /// </summary>
         public void SelectRandomPopupOption()
         {
@@ -488,45 +492,27 @@ namespace AC.SeleniumDriver.Pages.Login
             }
         }
 
-		/// <summary>
-		/// Click {location} pop-up option.
-		/// </summary>
-		public void SelectPopupOption(string location)
-		{
-			if (location == "Yeoville") { ClickElement(txtPopupOptionsList[1]); }
-			if (location == "Hillbrow") { ClickElement(txtPopupOptionsList[0]); }
-		}
-			
-
-		/// <summary>
-		/// Determines whether [is at set location info pop-up].
-		/// </summary>
-		/// <returns>
-		/// <c>true</c> if [is at set location info pop-up]; otherwise, <c>false</c>.
-		/// </returns>
-		public bool IsAtSetLocationInfoPopup()
+        /// <summary>
+        /// Determines whether [is at set location info pop-up].
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if [is at set location info pop-up]; otherwise, <c>false</c>.
+        /// </returns>
+        public bool IsAtSetLocationInfoPopup()
         {
             WaitUntilElementIsVisible(btnCancelPopup);
             return IsElementEnabled(btnCancelPopup);
         }
 
-		/// <summary>
-		/// Determines whether [is at set location info pop-up].
-		/// </summary>
-		public void IsClinicInfoCorrect(string location)
-		{
-			Assert.That(inputNeighbourhood.Text, Is.EqualTo(location));
-		}
 
+        #endregion
 
-		#endregion
+        #region .: 5 - Complete Login :.
 
-		#region .: 5 - Complete Login :.
-
-		/// <summary>
-		/// Click in go to homepage button.
-		/// </summary>
-		public void ClickGoToHomepage()
+        /// <summary>
+        /// Click in go to homepage button.
+        /// </summary>
+        public void ClickGoToHomepage()
         {
             {
                 ClickElement(btnStartAfterLogin);

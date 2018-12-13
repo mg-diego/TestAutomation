@@ -8,14 +8,12 @@ namespace AC.Contracts
     /// </summary>
     public interface IAnalytics
     {
-		#region .: DB hivmonitor :.
+        #region .: Experience Rated :.
 
-		#region .: Experience Rated :.
-
-		/// <summary>
-		/// GetAnalyticExperienceRatedFromDatabase
-		/// </summary>
-		Dictionary<string, string> GetAnalyticExperienceRatedFromDatabase(UserLogin user);
+        /// <summary>
+        /// GetAnalyticExperienceRatedFromDatabase
+        /// </summary>
+        Dictionary<string, string> GetAnalyticExperienceRatedFromDatabase();
 
         /// <summary>
         /// Check if Login Survey Analytic has been saved at DB
@@ -71,7 +69,7 @@ namespace AC.Contracts
         /// <summary>
         /// GetAnalyticUserLoggedInFromDatabase
         /// </summary>
-        Dictionary<string, string> GetAnalyticUserLoggedInFromDatabase(UserLogin user);
+        Dictionary<string, string> GetAnalyticUserLoggedInFromDatabase();
 
         /// <summary>
         /// Check if UserLoggedIn Analytic has been saved at DB
@@ -85,69 +83,13 @@ namespace AC.Contracts
         /// <summary>
         /// GetAnalyticBarcodeDataRequestedFromDatabase
         /// </summary>
-        Dictionary<string, string> GetAnalyticBarcodeDataRequestedFromDatabase(UserLogin user);
+        Dictionary<string, string> GetAnalyticBarcodeDataRequestedFromDatabase();
 
         /// <summary>
         /// Check if BarcodeDataRequested Analytic has been saved at DB
         /// </summary>
         void IsAnalyticBarcodeDataRequestedSaved(Dictionary<string, string> results, UserLogin user);
 
-		#endregion
-
-		#region .: UserBirthdayUpdated :.
-
-		/// <summary>
-		/// GetAnalyticUserBirthdayUpdatedFromDatabase
-		/// </summary>
-		Dictionary<string, string> GetAnalyticUserBirthdayUpdatedFromDatabase();
-
-		/// <summary>
-		/// Check if UserBirthdayUpdated Analytic has been saved at DB
-		/// </summary>
-		void IsAnalyticUserBirthdayUpdatedSaved(Dictionary<string, string> results, UserLogin user);
-
-		#endregion
-
-		#region .: UserGenderUpdated :.
-
-		/// <summary>
-		/// GetAnalyticUserBirthdayUpdatedFromDatabase
-		/// </summary>
-		Dictionary<string, string> GetAnalyticUserGenderUpdatedFromDatabase();
-
-		/// <summary>
-		/// Check if UserBirthdayUpdated Analytic has been saved at DB
-		/// </summary>
-		void IsAnalyticUserGenderUpdatedSaved(Dictionary<string, string> results, UserLogin user);
-
-		#endregion
-
-		#region .: UserLocationUpdated :.
-
-		/// <summary>
-		/// GetAnalyticUserBirthdayUpdatedFromDatabase
-		/// </summary>
-		Dictionary<string, string> GetAnalyticUserLocationUpdatedFromDatabase();
-
-		/// <summary>
-		/// Check if UserBirthdayUpdated Analytic has been saved at DB
-		/// </summary>
-		void IsAnalyticUserLocationUpdatedSaved(Dictionary<string, string> results, UserLogin user);
-
-		#endregion
-
-		/// <summary>
-		/// Before the scenario for BeforeScenarioWithResultsOnTheWay--- tag.
-		/// </summary>
-		void SetResultsOnTheWayBarcodesValidDateFrame();
-
-		#endregion
-
-		#region .: DB idserver :.
-
-		//Clean in idserver DB the user's info
-		void ClearUserData(UserLogin user);
-
-		#endregion
-	}
+        #endregion
+    }
 }

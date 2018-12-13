@@ -69,8 +69,8 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql, Version=4.0.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.0.3\lib\net451\Npgsql.dll</HintPath>
@@ -99,8 +99,8 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <HintPath>..\packages\SpecFlow.2.4.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=2.3.2.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.2.3.2\lib\net45\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -140,10 +140,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ScanBarcode.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\iThemba\05. Past Results\PastResults.feature.cs">
+    <Compile Include="Features\iThemba\05. Quick Pick-up\QuickPickUp.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PastResults.feature</DependentUpon>
+      <DependentUpon>QuickPickUp.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\iThemba\06. User Profile\UserProfile.feature.cs">
       <AutoGen>True</AutoGen>
@@ -165,16 +165,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ImportResults.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\iThemba\10. Invalid Results\InvalidResults.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InvalidResults.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\iThemba\11. No Connectivity\NoConnectivity.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NoConnectivity.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\ResultRelease\00. Login\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,7 +182,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\iThemba\AboutSteps.cs" />
-    <Compile Include="Steps\iThemba\NoConnectivitySteps.cs" />
     <Compile Include="Steps\iThemba\SurveySteps.cs" />
     <Compile Include="Steps\LoginBaseSteps.cs" />
     <Compile Include="Steps\Dashboard\DashboardMenuSteps.cs" />
@@ -205,6 +194,7 @@
     <Compile Include="Steps\iThemba\ScanBarcodeSteps.cs" />
     <Compile Include="Steps\iThemba\UserProfileSteps.cs" />
     <Compile Include="Steps\iThemba\StepBase.cs" />
+    <Compile Include="Steps\iThemba\QuickPickUpSteps.cs" />
     <Compile Include="Steps\ResultRelease\MenuSteps.cs" />
     <Compile Include="Steps\ResultRelease\SearchBarcodeSteps.cs" />
     <Compile Include="Steps\ResultRelease\UnreleaseResultSteps.cs" />
@@ -244,9 +234,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ScanBarcode.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\iThemba\05. Past Results\PastResults.feature">
+    <None Include="Features\iThemba\05. Quick Pick-up\QuickPickUp.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>PastResults.feature.cs</LastGenOutput>
+      <LastGenOutput>QuickPickUp.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\iThemba\06. User Profile\UserProfile.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -263,14 +253,6 @@
     <None Include="Features\iThemba\09. Import Results\ImportResults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ImportResults.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\iThemba\10. Invalid Results\InvalidResults.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>InvalidResults.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\iThemba\11. No Connectivity\NoConnectivity.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>NoConnectivity.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\ResultRelease\00. Login\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -305,6 +287,10 @@
       <Project>{BE03BCAE-BB47-4A7A-AFB6-C9D23EDF1C81}</Project>
       <Name>AC.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CL.Configuration\CL.Configuration.csproj">
+      <Project>{A41B28BD-3BD3-4419-B03C-983022541CE5}</Project>
+      <Name>CL.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CL.Containers\CL.Containers.csproj">
       <Project>{DB87744D-2B4A-4EEF-A6B4-E3C823A1222F}</Project>
       <Name>CL.Containers</Name>
@@ -324,8 +310,8 @@
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
-    <Error Condition="!Exists('..\packages\SpecFlow.2.4.0\build\SpecFlow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.2.4.0\build\SpecFlow.targets'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.2.3.2\build\SpecFlow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.2.3.2\build\SpecFlow.targets'))" />
   </Target>
   <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" />
-  <Import Project="..\packages\SpecFlow.2.4.0\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.2.4.0\build\SpecFlow.targets')" />
+  <Import Project="..\packages\SpecFlow.2.3.2\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.2.3.2\build\SpecFlow.targets')" />
 </Project>
