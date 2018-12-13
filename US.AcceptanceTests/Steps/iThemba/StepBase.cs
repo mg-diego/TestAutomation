@@ -55,16 +55,6 @@ namespace US.AcceptanceTests.Steps
             }
         }
 
-        public TestContext GetTestEnvironment()
-        {
-            TestContext testContext = StepBase.context;
-
-            testContext = StepBase.context;                        
-
-            var CurrentTestContext = testContext;
-
-            return CurrentTestContext;
-        }
 
         /// <summary>
         /// Gets the login user.

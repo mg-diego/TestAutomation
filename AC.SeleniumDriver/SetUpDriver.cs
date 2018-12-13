@@ -23,7 +23,13 @@ namespace AC.SeleniumDriver
         //WebBrowser webBrowser = WebBrowser.Chrome;
         WebBrowser webBrowser = WebBrowser.Android;
 
-        private enum WebBrowser
+		public static string initialTime = DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm", CultureInfo.InvariantCulture);
+		public string executionTime = DateTime.UtcNow.ToString("HH-mm-ss", CultureInfo.InvariantCulture);
+
+
+		public string executionFolder = "";
+
+		private enum WebBrowser
         {
             /// <summary>
             /// The android.
@@ -90,11 +96,14 @@ namespace AC.SeleniumDriver
 		/// <returns>The <see cref="string"/></returns>
 		public string MakeScreenshot(string stepName, string scenarioName)
 		{
-			var FolderName = $"{DateTime.UtcNow.ToString("yyyy-MM-dd HH-mm-ss", CultureInfo.InvariantCulture)}_{scenarioName}";
+			var FolderName = $"{executionTime}_{scenarioName}";
+			if (FolderName.Length > 40)
+				FolderName = FolderName.Substring(0, 40);
+			executionFolder = initialTime + " - iThemba - " + GetIthembaVersionName();
 
-			var binDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\TestResults\"+FolderName;
+			var binDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\TestResults\"+executionFolder+"\\"+FolderName;
 			CreateScreenShotFolder(binDirectory);
-			var screenshotName = $"{DateTime.UtcNow.ToString("yyyy-MM-dd HH-mm-ss", CultureInfo.InvariantCulture)}_{stepName}";
+			var screenshotName = $"{DateTime.UtcNow.ToString("HH-mm-ss", CultureInfo.InvariantCulture)}_{stepName}";
 
 			if (screenshotName.Length > 200)
 				screenshotName = screenshotName.Substring(0, 200);
@@ -177,8 +186,9 @@ namespace AC.SeleniumDriver
 				androidWebDriver = new AndroidDriver<RemoteWebElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(120));
 
 				//Get Initial Info
-				GetAndroidVersion();
-				GetIthembaVersionName();
+				Console.WriteLine(" - Android version: " + GetAndroidVersion());
+				Console.WriteLine(" - iThemba version: " + GetIthembaVersionName());
+
 
 				return androidWebDriver;
 			}
@@ -353,7 +363,7 @@ namespace AC.SeleniumDriver
         /// Executes adb command to get the iThemba version.
         /// </summary>
         /// <param name="path">The path.</param>
-        private void GetIthembaVersionName()
+        private string  GetIthembaVersionName()
         {
             //Execute adb command to get the deviceName
             var proc = new Process
@@ -375,14 +385,14 @@ namespace AC.SeleniumDriver
             versionName = versionName.Replace("\r\r\n", "");
             versionName = versionName.Replace(" ", "");
 
-            Console.WriteLine(" - iThemba version: " + versionName +"\n\n");
+			return versionName;
         }
 
         /// <summary>
         /// Executes adb command to get the Android version.
         /// </summary>
         /// <param name="path">The path.</param>
-        private void GetAndroidVersion()
+        private string GetAndroidVersion()
         {
             //Execute adb command to get the deviceName
             var proc = new Process
@@ -404,7 +414,7 @@ namespace AC.SeleniumDriver
             versionName = versionName.Replace("\r\r\n", "");
             versionName = versionName.Replace(" ", "");
 
-            Console.WriteLine(" - Android version: " + versionName);
+			return versionName;
         }
 
 		/// <summary>
