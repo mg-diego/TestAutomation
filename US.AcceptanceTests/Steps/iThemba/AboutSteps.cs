@@ -4,6 +4,7 @@ using AC.Contracts;
 using AC.Contracts.Pages;
 using FluentAssertions;
 using TechTalk.SpecFlow;
+using CL.Configuration;
 
 namespace US.AcceptanceTests.Steps.About
 {
