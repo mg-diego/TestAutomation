@@ -24,7 +24,7 @@ namespace US.AcceptanceTests.Steps.About
         /// <param name="setUp">The set up.</param>
         public AboutSteps(IAboutPage aboutPage, ISetUp setUp)
         {
-            this.aboutPage = aboutPage;
+			this.aboutPage = aboutPage;
             this.setUp = setUp;
         }
 
