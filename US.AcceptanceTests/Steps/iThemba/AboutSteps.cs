@@ -25,6 +25,8 @@ namespace US.AcceptanceTests.Steps.About
         /// <param name="setUp">The set up.</param>
         public AboutSteps(IAboutPage aboutPage, ISetUp setUp)
         {
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
 			this.aboutPage = aboutPage;
             this.setUp = setUp;
         }

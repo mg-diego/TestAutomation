@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -30,7 +31,9 @@ namespace US.AcceptanceTests.Steps.Main
 
         public MainPageSteps(ISetUp setUp, IMainPage mainPage, IAnalytics analytics)
         {
-            this.mainPage = mainPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.mainPage = mainPage;
             this.setUp = setUp;
 			this.analytics = analytics;
         }
@@ -282,10 +285,6 @@ namespace US.AcceptanceTests.Steps.Main
         {
             Thread.Sleep(TimeSpan.FromSeconds(1));
             var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.StepContext.StepInfo.StepDefinitionType.ToString(), ScenarioContext.Current.ScenarioInfo.Title);
-            var context = GetTestEnvironment();
-
-            //context.AddResultFile(screenshotPathFile);
-            //CurrentTestContext.AddResultFile(screenshotPathFile);            
         }
 
     }

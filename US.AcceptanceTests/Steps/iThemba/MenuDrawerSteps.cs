@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -21,7 +22,9 @@ namespace US.AcceptanceTests.Steps.MenuDrawer
         /// <param name="menuDrawerPage">The menu drawer.</param>
         public MenuDrawerSteps(IMenuDrawerPage menuDrawerPage)
         {
-            this.menuDrawerPage = menuDrawerPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.menuDrawerPage = menuDrawerPage;
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -27,7 +28,9 @@ namespace US.AcceptanceTests.Steps.NoConnectivity
         /// <param name="noConnectivityPage">The chat with communities page.</param>
         public NoConnectivitySteps(INoConnectivityPage noConnectivityPage, ISetUp setUp)
         {
-            this.noConnectivityPage = noConnectivityPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.noConnectivityPage = noConnectivityPage;
             this.setUp = setUp;
         }
 

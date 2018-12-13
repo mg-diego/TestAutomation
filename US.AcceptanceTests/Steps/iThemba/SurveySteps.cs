@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -30,7 +31,9 @@ namespace US.AcceptanceTests.Steps
 
         public SurveySteps(ISetUp setUp, ISurveyPage surveyPage, IAnalytics analytics)
         {
-            this.surveyPage = surveyPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.surveyPage = surveyPage;
             this.setUp = setUp;
             this.analytics = analytics;
         }

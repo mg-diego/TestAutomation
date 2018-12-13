@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -25,7 +26,9 @@ namespace US.AcceptanceTests.Steps.BloodResults
         /// <param name="bloodResultsPage">The blood results page.</param>
         public BloodResultsSteps(IBloodResultsPage bloodResultsPage, ISetUp setUp, IAnalytics analytics)
         {
-            this.bloodResultsPage = bloodResultsPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.bloodResultsPage = bloodResultsPage;
             this.setUp = setUp;
             this.analytics = analytics;
         }

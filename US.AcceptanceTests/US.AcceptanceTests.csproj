@@ -305,6 +305,10 @@
       <Project>{BE03BCAE-BB47-4A7A-AFB6-C9D23EDF1C81}</Project>
       <Name>AC.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CL.Configuration\CL.Configuration\CL.Configuration.csproj">
+      <Project>{0A15019B-57EA-43A2-9F1F-FE19EFF10A33}</Project>
+      <Name>CL.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CL.Containers\CL.Containers.csproj">
       <Project>{DB87744D-2B4A-4EEF-A6B4-E3C823A1222F}</Project>
       <Name>CL.Containers</Name>

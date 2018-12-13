@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -27,7 +28,9 @@ namespace US.AcceptanceTests.Steps.Communities
         /// <param name="communitiesPage">The chat with communities page.</param>
         public CommunitiesSteps(ICommunitiesPage communitiesPage, IAnalytics analytics)
         {
-            this.communitiesPage = communitiesPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.communitiesPage = communitiesPage;
             this.analytics = analytics;
         }
 

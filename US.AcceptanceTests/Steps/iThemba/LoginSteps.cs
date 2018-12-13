@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using AC.Contracts;
 using AC.Contracts.Pages;
-using CL.Containers;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -32,7 +32,9 @@ namespace US.AcceptanceTests.Steps.Login
 
         public LoginSteps(ISetUp setUp, ILoginPage loginPage, IAnalytics analytics)
         {
-            this.loginPage = loginPage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.loginPage = loginPage;
             this.setUp = setUp;
             this.analytics = analytics;
         }

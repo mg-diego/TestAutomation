@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using AC.Contracts;
 using AC.Contracts.Pages;
+using CL.Configuration;
 using CL.Containers;
 using DF.Entities;
 using FluentAssertions;
@@ -28,7 +29,9 @@ namespace US.AcceptanceTests.Steps.UserProfile
 
         public UserProfileSteps(IUserProfilePage userProfilePage)
         {
-            this.userProfilePage = userProfilePage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.userProfilePage = userProfilePage;
         }
 
         /// <summary>

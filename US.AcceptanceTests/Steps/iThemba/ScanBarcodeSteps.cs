@@ -3,6 +3,7 @@ using AC.Contracts.Pages;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 using AC.Contracts;
+using CL.Configuration;
 
 namespace US.AcceptanceTests.Steps.ScanBarcode
 {
@@ -22,7 +23,9 @@ namespace US.AcceptanceTests.Steps.ScanBarcode
         /// <param name="scanBarcodePage">The scan a barcode page.</param>
         public ScanBarcodeSteps(IScanBarcodePage scanBarcodePage, IAnalytics analytics)
         {
-            this.scanBarcodePage = scanBarcodePage;
+			TestConfiguration.CurrentScenario = ScenarioContext.Current.ScenarioInfo.Title;
+
+			this.scanBarcodePage = scanBarcodePage;
             this.analytics = analytics;
         }
 
