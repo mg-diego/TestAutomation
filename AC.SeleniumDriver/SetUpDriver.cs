@@ -116,11 +116,15 @@ namespace AC.SeleniumDriver
 			{
 				var screenshot = ((ITakesScreenshot)androidWebDriver).GetScreenshot();
 				screenshot.SaveAsFile(fullPathFile, ScreenshotImageFormat.Jpeg);
+				//TestContext.AddTestAttachment(fullPathFile);
+				
 			}
 			else
 			{
 				var screenshot = ((ITakesScreenshot)chromeWebDriver).GetScreenshot();
 				screenshot.SaveAsFile(fullPathFile, ScreenshotImageFormat.Jpeg);
+				//TestContext.AddTestAttachment(fullPathFile);
+				
 			}
 			return fullPathFile;
 		}
