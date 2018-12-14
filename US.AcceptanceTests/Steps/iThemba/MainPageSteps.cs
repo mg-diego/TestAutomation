@@ -142,7 +142,7 @@ namespace US.AcceptanceTests.Steps.Main
                     if (ScenarioContext.Current.TestError != null)
                     {
                         // Take a screenshot.
-                        //var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.ScenarioInfo.Title);
+                        //var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.ScenarioInfo.Title, "");
                         //CurrentTestContext.AddResultFile(screenshotPathFile);
                     }
                 }
@@ -171,8 +171,8 @@ namespace US.AcceptanceTests.Steps.Main
                     {
 						// Take a screenshot.
 						//Console.WriteLine(ScenarioContext.Current.ScenarioInfo);
-                        var screenshotPathFile = setUp.MakeScreenshot("stepName",ScenarioContext.Current.ScenarioInfo.Title);
-                        CurrentTestContext.AddResultFile(screenshotPathFile);
+                        //var screenshotPathFile = setUp.MakeScreenshot("stepName",ScenarioContext.Current.ScenarioInfo.Title);
+                        //CurrentTestContext.AddResultFile(screenshotPathFile);
                     }
                 }
             }
@@ -200,8 +200,8 @@ namespace US.AcceptanceTests.Steps.Main
                     if (ScenarioContext.Current.TestError != null)
                     {
                         // Take a screenshot.
-                        var screenshotPathFile = setUp.MakeScreenshot("stepName", ScenarioContext.Current.ScenarioInfo.Title);
-                        CurrentTestContext.AddResultFile(screenshotPathFile);
+                        //var screenshotPathFile = setUp.MakeScreenshot("stepName", ScenarioContext.Current.ScenarioInfo.Title);
+                        //CurrentTestContext.AddResultFile(screenshotPathFile);
                     }
                 }
             }
@@ -283,9 +283,11 @@ namespace US.AcceptanceTests.Steps.Main
         [AfterStep]
         public void AfterStepMakeScreenShot()
         {
+			Console.WriteLine("AfterStep");
             Thread.Sleep(TimeSpan.FromSeconds(1));
             var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.StepContext.StepInfo.StepDefinitionType.ToString(), ScenarioContext.Current.ScenarioInfo.Title);
-        }
+			CurrentTestContext.AddResultFile(screenshotPathFile);
+		}
 
     }
 }

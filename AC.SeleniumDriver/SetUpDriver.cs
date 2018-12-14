@@ -105,8 +105,8 @@ namespace AC.SeleniumDriver
 			CreateScreenShotFolder(binDirectory);
 			var screenshotName = $"{DateTime.UtcNow.ToString("HH-mm-ss", CultureInfo.InvariantCulture)}_{stepName}";
 
-			if (screenshotName.Length > 200)
-				screenshotName = screenshotName.Substring(0, 200);
+			if (screenshotName.Length > 150)
+				screenshotName = screenshotName.Substring(0, 150);
 
 			screenshotName = screenshotName + ".jpeg";
 
