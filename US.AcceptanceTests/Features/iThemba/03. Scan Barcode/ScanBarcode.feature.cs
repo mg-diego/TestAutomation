@@ -17,33 +17,22 @@ namespace US.AcceptanceTests.Features.IThemba._03_ScanBarcode
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("ScanBarcode")]
+    [NUnit.Framework.CategoryAttribute("iThemba")]
+    [NUnit.Framework.CategoryAttribute("Story:ScanBarcode")]
     public partial class ScanBarcodeFeature
     {
         
-        private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
-        private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
+        private TechTalk.SpecFlow.ITestRunner testRunner;
         
 #line 1 "ScanBarcode.feature"
 #line hidden
         
-        public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
+        [NUnit.Framework.OneTimeSetUpAttribute()]
+        public virtual void FeatureSetup()
         {
-            get
-            {
-                return this._testContext;
-            }
-            set
-            {
-                this._testContext = value;
-            }
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
-        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
-        {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ScanBarcode", "\tAs a user i want a clear indication when i scan a barcode that i am doing it cor" +
                     "rectly", ProgrammingLanguage.CSharp, new string[] {
                         "iThemba",
@@ -51,24 +40,19 @@ namespace US.AcceptanceTests.Features.IThemba._03_ScanBarcode
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
-        public static void FeatureTearDown()
+        [NUnit.Framework.OneTimeTearDownAttribute()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
-            if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "ScanBarcode")))
-            {
-                global::US.AcceptanceTests.Features.IThemba._03_ScanBarcode.ScanBarcodeFeature.FeatureSetup(null);
-            }
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -77,7 +61,7 @@ namespace US.AcceptanceTests.Features.IThemba._03_ScanBarcode
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Microsoft.VisualStudio.TestTools.UnitTesting.TestContext>(_testContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -90,13 +74,10 @@ namespace US.AcceptanceTests.Features.IThemba._03_ScanBarcode
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can open the camera to scan a Barcode")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScanBarcode")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:ScanBarcode")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can open the camera to scan a Barcode")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.CategoryAttribute("AfterScenarioWithGoToBloodResults")]
         public virtual void UserCanOpenTheCameraToScanABarcode()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can open the camera to scan a Barcode", null, new string[] {
@@ -115,13 +96,10 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can exit the camera by pressing Android native Back button")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "ScanBarcode")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:ScanBarcode")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can exit the camera by pressing Android native Back button")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.CategoryAttribute("AfterScenarioWithGoToBloodResults")]
         public virtual void UserCanExitTheCameraByPressingAndroidNativeBackButton()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can exit the camera by pressing Android native Back button", null, new string[] {

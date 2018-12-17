@@ -17,33 +17,23 @@ namespace US.AcceptanceTests.Features.IThemba._08_Analytics
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Analytics")]
+    [NUnit.Framework.CategoryAttribute("iThemba")]
+    [NUnit.Framework.CategoryAttribute("AfterScenarioWithGoToBloodResults")]
+    [NUnit.Framework.CategoryAttribute("Story:Analytics")]
     public partial class AnalyticsFeature
     {
         
-        private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
-        private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
+        private TechTalk.SpecFlow.ITestRunner testRunner;
         
 #line 1 "Analytics.feature"
 #line hidden
         
-        public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
+        [NUnit.Framework.OneTimeSetUpAttribute()]
+        public virtual void FeatureSetup()
         {
-            get
-            {
-                return this._testContext;
-            }
-            set
-            {
-                this._testContext = value;
-            }
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
-        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
-        {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Analytics", null, ProgrammingLanguage.CSharp, new string[] {
                         "iThemba",
                         "AfterScenarioWithGoToBloodResults",
@@ -51,24 +41,19 @@ namespace US.AcceptanceTests.Features.IThemba._08_Analytics
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
-        public static void FeatureTearDown()
+        [NUnit.Framework.OneTimeTearDownAttribute()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
-            if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "Analytics")))
-            {
-                global::US.AcceptanceTests.Features.IThemba._08_Analytics.AnalyticsFeature.FeatureSetup(null);
-            }
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -77,7 +62,7 @@ namespace US.AcceptanceTests.Features.IThemba._08_Analytics
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Microsoft.VisualStudio.TestTools.UnitTesting.TestContext>(_testContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -90,13 +75,9 @@ namespace US.AcceptanceTests.Features.IThemba._08_Analytics
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a user that login for the 3rd time I see a survey")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithResetApp")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("As a user that login for the 3rd time I see a survey")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithResetApp")]
         public virtual void AsAUserThatLoginForThe3RdTimeISeeASurvey()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As a user that login for the 3rd time I see a survey", null, new string[] {
@@ -114,13 +95,9 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When the camera is opened more than 3m then timeout appears")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("When the camera is opened more than 3m then timeout appears")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
         public virtual void WhenTheCameraIsOpenedMoreThan3MThenTimeoutAppears()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When the camera is opened more than 3m then timeout appears", null, new string[] {
@@ -140,13 +117,9 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User failed login attempts are saved in database")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithResetApp")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User failed login attempts are saved in database")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithResetApp")]
         public virtual void UserFailedLoginAttemptsAreSavedInDatabase()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User failed login attempts are saved in database", null, new string[] {
@@ -164,13 +137,9 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can join a Community from the list")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Analytics")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can join a Community from the list")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
         public virtual void UserCanJoinACommunityFromTheList()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can join a Community from the list", null, new string[] {

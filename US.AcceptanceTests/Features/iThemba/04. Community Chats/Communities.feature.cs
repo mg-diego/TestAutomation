@@ -17,33 +17,23 @@ namespace US.AcceptanceTests.Features.IThemba._04_CommunityChats
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Communities")]
+    [NUnit.Framework.CategoryAttribute("iThemba")]
+    [NUnit.Framework.CategoryAttribute("AfterScenarioWithGoToBloodResults")]
+    [NUnit.Framework.CategoryAttribute("Story:Communities")]
     public partial class CommunitiesFeature
     {
         
-        private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
-        private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
+        private TechTalk.SpecFlow.ITestRunner testRunner;
         
 #line 1 "Communities.feature"
 #line hidden
         
-        public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
+        [NUnit.Framework.OneTimeSetUpAttribute()]
+        public virtual void FeatureSetup()
         {
-            get
-            {
-                return this._testContext;
-            }
-            set
-            {
-                this._testContext = value;
-            }
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
-        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
-        {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Communities", "\tAs a user i want to be able to connect easily with the community once I open the" +
                     " application.\r\n\tI want to see a list of different communities and be able to joi" +
                     "n them with a click of a button", ProgrammingLanguage.CSharp, new string[] {
@@ -53,24 +43,19 @@ namespace US.AcceptanceTests.Features.IThemba._04_CommunityChats
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
-        public static void FeatureTearDown()
+        [NUnit.Framework.OneTimeTearDownAttribute()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
-            if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "Communities")))
-            {
-                global::US.AcceptanceTests.Features.IThemba._04_CommunityChats.CommunitiesFeature.FeatureSetup(null);
-            }
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -79,7 +64,7 @@ namespace US.AcceptanceTests.Features.IThemba._04_CommunityChats
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Microsoft.VisualStudio.TestTools.UnitTesting.TestContext>(_testContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -92,14 +77,10 @@ namespace US.AcceptanceTests.Features.IThemba._04_CommunityChats
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can open the Chat with Communities menu option")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can open the Chat with Communities menu option")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.CategoryAttribute("AfterScenarioWithGoToBloodResults")]
         public virtual void UserCanOpenTheChatWithCommunitiesMenuOption()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can open the Chat with Communities menu option", null, new string[] {
@@ -118,13 +99,9 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a user I can navigate back using the Android native BACK button")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("As a user I can navigate back using the Android native BACK button")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
         public virtual void AsAUserICanNavigateBackUsingTheAndroidNativeBACKButton()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As a user I can navigate back using the Android native BACK button", null, new string[] {
@@ -144,6 +121,13 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("As a user I can see my correct WhatsApp groups by gender / location")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithResetApp")]
+        [NUnit.Framework.TestCaseAttribute("ResultsOnTheWay", "Male", "Hillbrow", null)]
+        [NUnit.Framework.TestCaseAttribute("User49", "Female", "Hillbrow", null)]
+        [NUnit.Framework.TestCaseAttribute("User1001", "Male", "Yeoville", null)]
+        [NUnit.Framework.TestCaseAttribute("NoResult", "Female", "Yeoville", null)]
         public virtual void AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation(string user, string gender, string location, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -168,87 +152,10 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a user I can see my correct WhatsApp groups by gender / location: ResultsOnThe" +
-            "Way")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithResetApp")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "ResultsOnTheWay")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:user", "ResultsOnTheWay")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:gender", "Male")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:location", "Hillbrow")]
-        public virtual void AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation_ResultsOnTheWay()
-        {
-#line 28
-this.AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation("ResultsOnTheWay", "Male", "Hillbrow", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a user I can see my correct WhatsApp groups by gender / location: User49")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithResetApp")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "User49")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:user", "User49")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:gender", "Female")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:location", "Hillbrow")]
-        public virtual void AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation_User49()
-        {
-#line 28
-this.AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation("User49", "Female", "Hillbrow", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a user I can see my correct WhatsApp groups by gender / location: User1001")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithResetApp")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "User1001")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:user", "User1001")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:gender", "Male")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:location", "Yeoville")]
-        public virtual void AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation_User1001()
-        {
-#line 28
-this.AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation("User1001", "Male", "Yeoville", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As a user I can see my correct WhatsApp groups by gender / location: NoResult")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithResetApp")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "NoResult")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:user", "NoResult")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:gender", "Female")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:location", "Yeoville")]
-        public virtual void AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation_NoResult()
-        {
-#line 28
-this.AsAUserICanSeeMyCorrectWhatsAppGroupsByGenderLocation("NoResult", "Female", "Yeoville", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can join a Community Chat")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("iThemba")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Story:Communities")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("BeforeScenarioWithUniqueLogin")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AfterScenarioWithGoToBloodResults")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can join a Community Chat")]
+        [NUnit.Framework.CategoryAttribute("BeforeScenarioWithUniqueLogin")]
+        [NUnit.Framework.CategoryAttribute("AfterScenarioWithGoToBloodResults")]
         public virtual void UserCanJoinACommunityChat()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can join a Community Chat", null, new string[] {
