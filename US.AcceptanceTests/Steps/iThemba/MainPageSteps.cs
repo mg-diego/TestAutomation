@@ -286,7 +286,7 @@ namespace US.AcceptanceTests.Steps.Main
 			Console.WriteLine("AfterStep");
             Thread.Sleep(TimeSpan.FromSeconds(1));
             var screenshotPathFile = setUp.MakeScreenshot(ScenarioContext.Current.StepContext.StepInfo.StepDefinitionType.ToString(), ScenarioContext.Current.ScenarioInfo.Title);
-			CurrentTestContext.AddResultFile(screenshotPathFile);
+			//CurrentTestContext.AddResultFile(screenshotPathFile);
 		}
 
     }
